@@ -25,13 +25,6 @@ public class Card : MonoBehaviour
     private Suit mSuit;
     private int mValue;
 
-    // Constructor
-    public Card(Suit suit, int value)
-    {
-        mSuit = suit;
-        mValue = value;
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +35,13 @@ public class Card : MonoBehaviour
     void Update()
     {
         
+    }
+
+    // Setters
+    public void setAttribs(Suit suit, int value)
+    {
+        mSuit = suit;
+        mValue = value;
     }
 
     // Getters

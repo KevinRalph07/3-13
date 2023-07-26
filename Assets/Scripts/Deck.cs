@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Deck : MonoBehaviour
 {
     // Attributes
+    public GameObject Card;
     private int mNumDecks;
     private int mNumJokers;
     private List<Card> mFullDeck;
@@ -14,10 +16,8 @@ public class Deck : MonoBehaviour
 
 
     // Constructor
-    public Deck(int numDecks, int numJokers)
+    public Deck()
     {
-        mNumDecks = numDecks;
-        mNumJokers = numJokers;
         mFullDeck = new List<Card>();
         mCurDeck = new Stack<Card>();
         mCurDiscardPile = new Stack<Card>();
@@ -35,8 +35,11 @@ public class Deck : MonoBehaviour
         
     }
 
-    public List<Card> InitDeck ()
+    public List<Card> InitDeck(int numDecks, int numJokers)
     {
+        mNumDecks = numDecks;
+        mNumJokers = numJokers;
+
         // add standard 52 cards to deck mNumDecks times
         for (int d = 0; d < mNumDecks; d++)
         {
@@ -44,14 +47,21 @@ public class Deck : MonoBehaviour
             {
                 Suit suit = (Suit)((Mathf.Floor(i / 13) % 4) + 1);
                 int value = i % 13 + 1;
-                mFullDeck.Add(new Card(suit, value));
+                GameObject card = Instantiate(Card, new Vector3(0, 0, 0), Quaternion.identity);
+                card.GetComponent<Card>().setAttribs(suit, value);
+                mFullDeck.Add(card.GetComponent<Card>());
+                //Debug.Log(value + suit.ToString());
+
             }
         }
         
         // add mNumJokers jokers to deck
         for (int j = 0; j < mNumJokers; j++)
         {
-            mFullDeck.Add(new Card(Suit.JOKER, 0));
+            GameObject card = Instantiate(Card, new Vector3(0, 0, 0), Quaternion.identity);
+            card.GetComponent<Card>().setAttribs(Suit.JOKER, 0);
+            mFullDeck.Add(card.GetComponent<Card>());
+            //Debug.Log("Joker");
         }
 
 
