@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
         hand = 3;
         Deal(hand);
         curPlayer = 0;
+        players[curPlayer].GetComponent<Player>().isTurn = true;
         updateUI();
 
     }
