@@ -6,11 +6,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Attributes
-    private List<Card> mHand;
+    public List<Card> Hand;
 
     public Player()
     {
-        mHand = new List<Card>();
+        Hand = new List<Card>();
     }
 
     // Start is called before the first frame update
