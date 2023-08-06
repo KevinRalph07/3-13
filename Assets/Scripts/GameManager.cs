@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
         players.Add(Instantiate(Player, new Vector3(0, 0, 0), Quaternion.identity));
         players.Add(Instantiate(Player, new Vector3(0,0,0), Quaternion.identity));
         Deck deck = TheDeck.GetComponent<Deck>();
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
         curPlayer = 0;
         players[curPlayer].GetComponent<Player>().isTurn = true;
         updateUI();
+        */
 
     }
 
